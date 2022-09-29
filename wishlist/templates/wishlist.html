@@ -1,25 +1,42 @@
 {% extends 'base.html' %}
 
-{% block content %}
-<h5>Nama: </h5>
-<b>emilyrumia</b>
+{% block meta %}
+<style>
+    th {
+        
+    }
+</style>
 
-<table>
-    <tr>
-    <th>Nama Barang</th>
-    <th>Harga Barang</th>
-    <th>Deskripsi</th>
-    </tr>
-    {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
-    {% for barang in list_barang %}
-    <tr>
-        <th>{{barang.nama_barang}}</th>
-        <th>{{barang.harga_barang}}</th>
-        <th>{{barang.deskripsi}}</th>
-    </tr>
+{% endblock meta %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <h5 class="text-success" class="navbar-brand">Welcome {{nama}}!</h5>
+        <button class="btn btn-outline-success" type="submit"><a href="{% url 'wishlist:logout' %}"><h6 class="text-success">Logout</h6></a></button>
+      </div>
+    </div>
+  </nav>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col" class="table-success" width = 20%>Nama Barang</th>
+        <th scope="col" class="table-success" width = 20%>Harga Barang</th>
+        <th scope="col" class="table-success" width = 60%>Deskripsi</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
+        {% for barang in list_barang %}
+        <tr>
+            <th>{{barang.nama_barang}}</th>
+            <th>{{barang.harga_barang}}</th>
+            <th>{{barang.deskripsi}}</th>
+        </tr>
     {% endfor %}
-</table>
-<h5>Sesi terakhir login: {{ last_login }}</h5>
-<button><a href="{% url 'wishlist:logout' %}">Logout</a></button>
+    </tbody>
+  </table>
+<h6>Sesi terakhir login: {{ last_login }}</h6>
 
 {% endblock content %}

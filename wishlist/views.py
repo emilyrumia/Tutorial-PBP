@@ -19,9 +19,8 @@ def show_wishlist(request):
     'list_barang': data_barang_wishlist,
     'nama': 'Emily Rumia Naomi',
     'last_login': request.COOKIES['last_login'],
-}
+    }
     return render(request, "wishlist.html", context)
-
 
 
 def show_xml(request):
