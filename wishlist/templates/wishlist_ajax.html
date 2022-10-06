@@ -9,17 +9,18 @@
             for (temp =0; temp<data.length;i++){
 
                 var namaBarang = document.createElement("namaBarang").append(data[temp].fields.nama_barang);
-                var hargaBarang = document.createElement("td").append(data[temp].fields.harga_barang);
-                var deskripsiBarangg = document.createElement("td").append(data[temp].fields.deskripsi);
+                var hargaBarang = document.createElement("hargaBarang").append(data[temp].fields.harga_barang);
+                var deskripsiBarang = document.createElement("deskripsiBarang").append(data[temp].fields.deskripsi);
+
     
-                $("#myTable").append(`<tr><td>${namaBarang}</td><td>${hargaBarang}</td><td>${deskripsiBarangg}</td></tr>`)
+                $("#myTable").append({namaBarang}, {hargaBarang}, {deskripsiBarang})
             
             }
     
             });
     
             $("#btn-submit").click(function(){
-                $.post("http://localhost:8000/wishlist/ajax/submit", {nama_barang: $("#nama_barang").val(),harga_barang:parseInt($("#harga_barang").val()),deskripsi:$("#deskripsi").val()} )
+                $.post("http://localhost:8000/wishlist/ajax/submit/", {nama_barang: $("#nama_barang").val(),harga_barang:parseInt($("#harga_barang").val()),deskripsi:$("#deskripsi").val()} )
             })
         });
     </script>
