@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
 
 @login_required(login_url='/wishlist/login/')
 def show_wishlist(request):
@@ -33,6 +34,7 @@ def show_wishlist_ajax(request):
     return render(request, "wishlist_ajax.html", context)
 
 @login_required(login_url='login/')
+@csrf_exempt
 def wishlist_ajax(request):
     if request.method == 'POST':
         nama_barang = request.POST.get('nama_barang')
